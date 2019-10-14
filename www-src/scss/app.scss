@@ -1,0 +1,162 @@
+////////////////////////////////////////////////////////////////////////////////
+//	BASE | LAYOUT | MODULE | STATE | THEME /////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@import "../lib/bootstrap/4.0.0-alpha4/scss/_variables.scss";
+@import "../lib/bootstrap/4.0.0-alpha4/scss/_mixins.scss";
+@import "colors";
+@import "fonts";
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// BASE ////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+#resultados {
+	display: none;
+}
+button:focus {
+	outline: 0 !important;
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// LAYOUT //////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+body {
+	display: flex;
+	flex-direction: column;
+}
+header {
+	position: fixed;
+	z-index: 1000;
+	height: 60px;
+	width: 100vw;
+	nav.navbar {
+		height: 60px;
+		background-color: $orange;
+	}
+	.navbar-brand {
+		text-transform: uppercase;
+		font-family: 'roboto-condensed', sans-serif;
+		font-weight: bold;
+		text-rendering: optimizeLegibility;
+	}
+}
+main {
+	width: 100vw;
+	margin-top: 60px;
+	padding-top: 1rem;
+	@include media-breakpoint-up(sm) {
+		& {
+			width: 90vw;
+		}
+	}
+	& > div {
+		 width: 100%;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//	MODULE /////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+.card {
+	margin-bottom: -0.5rem;
+	@include media-breakpoint-up(xs) {
+		& {margin-bottom: 1rem;}
+	}
+	.card-title {
+		margin-bottom: 0rem;
+		@include media-breakpoint-up(sm) {
+			& {margin-bottom: 1rem;}
+		}
+	}
+}
+#linhas {
+	.line-1  { background-color: $line-1; border: 1px solid $line-1; }
+	.line-2  { background-color: $line-2; border: 1px solid $line-2; }
+	.line-3  { background-color: $line-3; border: 1px solid $line-3; }
+	.line-4  { background-color: $line-4; border: 1px solid $line-4; }
+	.line-5  { background-color: $line-5; border: 1px solid $line-5; }
+	.line-15 { background-color: $line-15; border: 1px solid $line-15; }
+	.btn-line {
+		color: white;
+		font-family: 'Helvetica', 'Arial', 'roboto', sans-serif !important;
+		font-weight: bold;
+		letter-spacing: 0.03rem;
+		text-rendering: optimizeLegibility;
+		&.line-1  {&:hover, &:focus, &:active{ background-color: white; color: $line-1; }}
+		&.line-2  {&:hover, &:focus, &:active{ background-color: white; color: $line-2; }}
+		&.line-3  {&:hover, &:focus, &:active{ background-color: white; color: $line-3; }}
+		&.line-4  {&:hover, &:focus, &:active{ background-color: white; color: $line-4; }}
+		&.line-5  {&:hover, &:focus, &:active{ background-color: white; color: $line-5; }}
+		&.line-15 {&:hover, &:focus, &:active{ background-color: white; color: $line-15;}}
+	}
+}
+#avaliar {
+	.line-status-1  { background-color: mix($danger, $warning,  100%); }
+	.line-status-2  { background-color: mix($danger, $warning,   80%); }
+	.line-status-3  { background-color: mix($danger, $warning,   60%); }
+	.line-status-4  { background-color: mix($danger, $warning,   40%); }
+	.line-status-5  { background-color: mix($danger, $warning,   20%); }
+	.line-status-6  { background-color: mix($danger, $warning,    0%); }
+	.line-status-7  { background-color: mix($success, $warning,  25%); }
+	.line-status-8  { background-color: mix($success, $warning,  50%); }
+	.line-status-9  { background-color: mix($success, $warning,  75%); }
+	.line-status-10 { background-color: mix($success, $warning, 100%); }
+	.btn-line-status {
+		font-size: 0.5rem;
+		padding: 0.1rem 0 0.2rem;
+		@include media-breakpoint-up(sm) {
+			& {
+				padding: 0.4rem 0 0.5rem;
+				font-size: 0.8rem;}
+		}
+		@include media-breakpoint-up(md) {
+			& {
+				padding: 1.2rem 0 0.8rem;
+				font-size: 1rem;
+			}
+		}
+		&.line-status-1  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,   0%); }}
+		&.line-status-2  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,   6%); }}
+		&.line-status-3  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  12%); }}
+		&.line-status-4  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  25%); }}
+		&.line-status-5  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  45%); }}
+		&.line-status-6  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  55%); }}
+		&.line-status-7  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  75%); }}
+		&.line-status-8  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  87%); }}
+		&.line-status-9  {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger,  93%); }}
+		&.line-status-10 {&:hover,&:focus,&:active{ background-color: white; color:mix($success, $danger, 100%); }}
+	}
+}
+.btn.btn-primary.btn-raised:not(.btn-link) {
+	background-color:  $orange;
+	&:hover {
+		background-color:  lighten($orange, 10%);
+	}
+	&:active, &:focus {
+		animation: pulse 1.5s ease-in-out infinite;
+		background-color:  lighten($orange, 10%);
+	}
+	@keyframes pulse {
+	   0% { background-color: lighten($orange, 10%); }
+	 	50% { background-color: lighten($orange, 20%); }
+	 100% { background-color: lighten($orange, 10%); }
+	}
+}
+.btn-huge {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// STATE ///////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+.headroom {
+		will-change: transform;
+		transition: transform 200ms linear;
+}
+.headroom--pinned {
+		transform: translateY(0%);
+}
+.headroom--unpinned {
+		transform: translateY(-90%);
+}

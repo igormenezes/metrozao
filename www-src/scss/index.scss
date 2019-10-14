@@ -1,0 +1,104 @@
+////////////////////////////////////////////////////////////////////////////////
+//	BASE | LAYOUT | MODULE | STATE | THEME /////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+@import "../lib/bootstrap/4.0.0-alpha4/scss/_variables.scss";
+@import "../lib/bootstrap/4.0.0-alpha4/scss/_mixins.scss";
+@import "colors";
+@import "fonts";
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// BASE ////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+html {
+	overflow: hidden;
+	animation: opacity 0.3s ease-out;
+}
+@media screen and (max-device-width: 767px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+	#logo {
+		font-size: 3rem !important;
+  	letter-spacing: 0 !important;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// MODULE //////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+#logo {
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 1rem;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: 'roboto-condensed', sans-serif;
+	font-weight: bold;
+	text-rendering: optimizeLegibility;
+	letter-spacing: -0.26rem;
+	font-size: 3rem;
+	font-size: 22.5vmin;
+	color: black;
+	animation: logo 0.15s ease-out;
+}
+@include media-breakpoint-up(sm) {
+	#logo {font-size: 7.7rem;}
+}
+@include media-breakpoint-up(lg) {
+	#logo {font-size: 8rem;}
+}
+svg {
+	$xPad: 	31.25px;
+	$xBase: 200px+$xPad;
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	height: auto;
+	min-width: 280px;
+	max-width: 570px;
+	border: 1rem solid transparent;
+	use.line-1  {fill:  $line-1; transition: fill 0.6s ease;}
+	use.line-2  {fill:  $line-2; transition: fill 0.6s ease;}
+	use.line-3  {fill:  $line-3; transition: fill 0.6s ease;}
+	use.line-4  {fill:  $line-4; transition: fill 0.6s ease;}
+	use.line-5  {fill:  $line-5; transition: fill 0.6s ease;}
+	use.line-15 {fill: $line-15; transition: fill 0.6s ease;}
+	.coursePoint{fill: $white;}
+	#row1 {
+		animation: row 4.8s ease-in-out infinite;
+		animation-delay: 0.8s;
+	}
+	#row2 {
+			animation: row 5.6s ease-in-out infinite;
+			animation-delay: 0.6s;
+			.row_capsuless {
+				transform: translate(-$xBase, 150px);
+			}
+	}
+	#row3 {
+			animation: row 4.4s ease-in-out infinite;
+			animation-delay: 0.9s;
+			.row_capsuless {
+				transform: translateY(300px);
+			}
+	}
+	@keyframes row {
+	   0%	{transform: translateX(-$xBase*10);}
+	  25%	{transform: translateX(0);}
+	}
+	@keyframes logo {
+		  0%	{transform: translateY($xBase*1);}
+	   70%  {transform: translateY(-10px);}
+	  100%	{transform: translateY(0);}
+	}
+	@keyframes opacity {
+	    0%	{opacity: 0;}
+	  100%	{opacity: 1;}
+	}
+}

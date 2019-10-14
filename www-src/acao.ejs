@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <% include _head %>
+	    <script type="text/javascript" src="js/webservice.js"></script>
+	    <script type="text/javascript">
+	        controller.initialize();
+	    </script>
+	</head>
+	<body>
+		<% include _header %>
+		<main class="container text-xs-center">
+			<div id="acao" class="card">
+				<div class="card-block">
+					<h4 class="card-title text-xs-center">Como o metrô está?</h4>
+					<button type="button" class="btn btn-primary btn-block btn-huge btn-raised" onclick="controller.acao('avaliar');">Informar</button>
+			    <button type="button" class="btn btn-primary btn-block btn-huge btn-raised" onclick="controller.acao('verificar');">Verificar</button>
+			  </div>
+				<div class="card-footer text-muted small">Este aplicativo está em fase de teste. Se você encontrar um erro, por favor informe ao desenvolvedor</div>
+			</div>
+		</main>
+	</body>
+</html>

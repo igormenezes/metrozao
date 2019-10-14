@@ -1,0 +1,39 @@
+<!-- build:remove -->
+<script src="//localhost:35729/livereload.js"></script>
+<!-- endbuild -->
+
+<!-- meta -->
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+<title>Metrozão</title>
+
+<!-- jQuery https://jquery.com/ -->
+<script type="text/javascript" src="lib/jquery/jquery-3.1.1.min.js"></script>
+
+<!-- Bootstrap http://getbootstrap.com/ -->
+<link rel="stylesheet" type="text/css" href="lib/bootstrap/4.0.0-alpha4/dist/css/bootstrap.min.css">
+<!-- <script type="text/javascript" src="lib/bootstrap/4.0.0-alpha4/dist/js/bootstrap.min.js"></script> -->
+
+<!-- Bootstrap Material Design http://fezvrasta.github.io/bootstrap-material-design/ -->
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/0.5.10/dist/css/bootstrap-material-design.css">
+<script type="text/javascript" src="lib/bootstrap-material-design/0.5.10/dist/js/material.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/0.5.10/dist/css/ripples.min.css">
+<script type="text/javascript" src="lib/bootstrap-material-design/0.5.10/dist/js/ripples.min.js"></script>
+
+<!-- app -->
+<link rel="stylesheet" type="text/css" href="css/app.css">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+
+<!-- Headroom http://wicky.nillia.ms/headroom.js/ -->
+<script type="text/javascript" src="lib/headroom/0.9.3/headroom.js"></script>
+<script type="text/javascript" src="lib/headroom/0.9.3/jquery.headroom.min.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) {
+		$("header").headroom();
+	})
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <% include _head %>
+	    <script type="text/javascript" src="js/webservice.js"></script>
+	    <script type="text/javascript">
+	        controller.initialize();
+	    </script>
+	</head>
+	<body>
+		<% include _header %>
+		<main class="container text-xs-center">
+			<div id="avaliar" class="card">
+				<div class="card-block">
+					<h4 class="card-title text-xs-center">Como a linha está?</h4>
+					<div class="btn-group-vertical btn-block">
+						<% [
+							{"rating": 1,  "icon":"sentiment_very_dissatisfied", 	"message":"Não pegue o metrô de jeito nenhum." },
+			        {"rating": 2,  "icon":"mood_bad",											"message":"Evite o metrô, está horrível !!" },
+			        {"rating": 3,  "icon":"sentiment_dissatisfied", 			"message":"Empurrando todo mundo entra !?" },
+			        {"rating": 4,  "icon":"sentiment_dissatisfied", 			"message":"Lento demais e muito lotado, Argh ..!" },
+			        {"rating": 5,  "icon":"sentiment_neutral", 						"message":"Se você tiver paciência, até dá para ir ..?" },
+			        {"rating": 6,  "icon":"sentiment_neutral", 						"message":"Está cheio, mas dá para ir..." },
+			        {"rating": 7,  "icon":"sentiment_neutral", 						"message":"Está ok, dá para respirar tranquilo" },
+			        {"rating": 8,  "icon":"sentiment_satisfied", 					"message":"Viagem sossegada" },
+			        {"rating": 9,  "icon":"mood", 												"message":"Espaço para sentar a vontade" },
+			        {"rating": 10, "icon":"sentiment_very_satisfied", 		"message":"Dá para deitar no vagão, se você quiser" }
+						].reverse().forEach(status=>{ %>
+							<button class="btn btn-raised btn-line-status line-status-<%= status.rating %>" onclick="controller.avaliar('<%= status.rating %>');">
+								<div class="row">
+									<div class="col-xs-12 col-md-3 col-lg-4 col-xl-4 text-xs-center text-md-right"><b><%= status.rating %></b> <i class="material-icons"><%=status.icon%></i></div>
+									<div class="col-xs-12 col-md-9 col-lg-8 col-xl-8 text-xs-center text-md-left"><%= status.message %></div>
+								</div>
+							</button>
+						<% }) %>
+					</div>
+		    </div>
+			</main>
+	</body>
+</html>

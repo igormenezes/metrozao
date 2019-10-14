@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <% include _head %>
+	    <script type="text/javascript" src="js/webservice.js"></script>
+	    <script type="text/javascript">
+	        controller.initialize();
+	    </script>
+	</head>
+	<body>
+		<% include _header %>
+		<main class="container text-xs-center">
+			<div id="linhas" class="card">
+				<div class="card-block">
+		      <h4 class="card-title">Em qual linha você está?</h4>
+						<% [
+							{"number":  1, "name":"azul", 		"slug":"azul" },
+			        {"number":  2, "name":"verde", 		"slug":"verde" },
+			        {"number":  3, "name":"vermelha", "slug":"vermelha" },
+			        {"number":  4, "name":"amarela",  "slug":"amarela" },
+			        {"number":  5, "name":"lilás", 		"slug":"lilas"	},
+			        {"number": 15, "name":"prata", 		"slug":"prata" }
+						].forEach(line=>{ %>
+							<button class="btn btn-block btn-lg btn-raised btn-line line-<%=line.number%>" onclick="controller.linhas('<%=line.slug%>');">Linha <%=line.number%> &middot; <%=line.name%></button>
+						<% }) %>
+				</div>
+				<div class="card-footer text-muted small">Sua linha ainda não está na lista? Iremos incluir numa próxima versão deste aplicativo</div>
+	    </div>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- build:remove -->
+<script src="//localhost:35729/livereload.js"></script>
+<!-- endbuild -->
+
+<!-- meta -->
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+<title>Metrozão</title>
+
+<!-- jQuery https://jquery.com/ -->
+<script type="text/javascript" src="lib/jquery/jquery-3.1.1.min.js"></script>
+
+<!-- Bootstrap http://getbootstrap.com/ -->
+<link rel="stylesheet" type="text/css" href="lib/bootstrap/4.0.0-alpha4/dist/css/bootstrap.min.css">
+<!-- <script type="text/javascript" src="lib/bootstrap/4.0.0-alpha4/dist/js/bootstrap.min.js"></script> -->
+
+<!-- Bootstrap Material Design http://fezvrasta.github.io/bootstrap-material-design/ -->
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/0.5.10/dist/css/bootstrap-material-design.css">
+<script type="text/javascript" src="lib/bootstrap-material-design/0.5.10/dist/js/material.min.js"></script>
+<link rel="stylesheet" type="text/css" href="lib/bootstrap-material-design/0.5.10/dist/css/ripples.min.css">
+<script type="text/javascript" src="lib/bootstrap-material-design/0.5.10/dist/js/ripples.min.js"></script>
+
+<!-- app -->
+<link rel="stylesheet" type="text/css" href="css/app.css">
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/controller.js"></script>
+
+<!-- Headroom http://wicky.nillia.ms/headroom.js/ -->
+<script type="text/javascript" src="lib/headroom/0.9.3/headroom.js"></script>
+<script type="text/javascript" src="lib/headroom/0.9.3/jquery.headroom.min.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) {
+		$("header").headroom();
+	})
+</script>
+
+		<!-- snap.svg http://snapsvg.io/ -->
+		<script type="text/javascript" src="lib/snap.svg/0.4.1/dist/snap.svg.js"></script>
+		<!-- app -->
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+	      app.initialize();
+	  </script>
+	</head>
+	<body>
+		<svg id="drawing" height="400" width="400" viewBox="0 0 400 400">
+			<text id="loading" x="80" y="35" font-family="Verdana" font-size="35">Carregando</text>
+		</svg>
+		<div id="logo">Metrozão</div>
+		<script >
+			////////////////////////////////////////////////////////////////////////////////
+			// Colorfull line drawings and animations
+			document.addEventListener("DOMContentLoaded", function(event) {
+				////////////////////////////////////////////////////////////////////////////////
+				// Select the SVG element, and define a 'course' group with baisc SVG objects
+				const s = Snap("#drawing")
+				$('svg #loading').remove()
+				const courseObj = {
+					path: s.path("M50.0,100.0 C22.39,100.0,0,77.61,0,50.0 S22.39,0,50.0,0 h300.0 c27.61,0,50.0,22.39,50.0,50.0 s-22.39,50.0 -50.0,50.0 H50.0z").attr({class:"coursePath"}),
+					pointA: s.circle( 50.0, 50, 0).attr({class:"coursePoint"}),
+					pointB: s.circle(350.0, 50, 0).attr({class:"coursePoint"}),
+				}
+				const course = s.g(courseObj.path, courseObj.pointA, courseObj.pointB).toDefs()
+				////////////////////////////////////////////////////////////////////////////////
+				// Define 'row' groups using 'course' in diferent positions
+				const xPad = 31.25
+				const xBase = 200+xPad
+				let amountOfCourses = (a)=>{
+					let row = []
+					for (e=0;e<a;e++) {
+						row[e] = course.use().attr({transform:"t"+xBase*e*2+",0"})
+					}
+					return row
+				}
+				let row_capsuless = ()=>s.g().attr({class:"row_capsuless"}).add(amountOfCourses(7))
+				s.append(s.g(row_capsuless()).attr({id:"row1", class:"row"}))
+				s.append(s.g(row_capsuless()).attr({id:"row2", class:"row"}))
+				s.append(s.g(row_capsuless()).attr({id:"row3", class:"row"}))
+				// bounce white circles
+				setTimeout(()=>{
+					courseObj.pointA.animate({r:31.25}, 300, mina.bounce)
+					courseObj.pointB.animate({r:31.25}, 300, mina.bounce)
+				}, 300)
+				////////////////////////////////////////////////////////////////////////////////
+				// let css class names for SVG 'course' fills
+				let colors = {
+					list: ['line-1', 'line-2', 'line-3', 'line-4', 'line-5', 'line-15'],
+					random: ()=>colors.list[Math.floor(Math.random()*colors.list.length)]
+				}
+				// apply the colors, for set interval, after set timeout
+				setTimeout(()=>applyColors(), 700)
+				setTimeout(()=>{setInterval(()=>applyColors(), 2000)}, 1000)
+				function applyColors(){
+					$('use').removeClass()
+					$('use').each(function(){
+						$(this).addClass(colors.random())
+					})
+				}
+			////////////////////////////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////////////////////////
+			}, false)
+		</script>
+	</body>
+</html>
